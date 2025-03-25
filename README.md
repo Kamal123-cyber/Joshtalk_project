@@ -20,14 +20,6 @@ $ source env/bin/activate  # On Windows: env\Scripts\activate
 $ pip install -r requirements.txt
 ```
 
-### **4. Configure Environment Variables**
-Create a **.env** file in the project's root directory and add the required environment variables:
-```env
-SECRET_KEY=your_secret_key
-DEBUG=True
-DATABASE_URL=sqlite:///db.sqlite3  # Change this for production
-```
-
 ### **5. Apply Migrations**
 ```bash
 $ python manage.py migrate
@@ -55,21 +47,21 @@ The API will be available at: **http://127.0.0.1:8000/**
 **Request Body:**
 ```json
 {
-    "email": "user@example.com",
-    "username": "john_doe",
-    "password": "password123"
+    "email": "kamal@gmail.com",
+    "username": "kamal12",
+    "first_name": "Kamal",
+    "last_name": "Kumar",
+    "mobile": "+1234567890",
+    "password": "abcdefgh",
+    "confirm_password": "abcdefgh"
 }
 ```
 
 **Response:**
 ```json
 {
-    "message": "User registered successfully",
-    "user": {
-        "uid": "c8e2a0d2-0b60-4f58-b98f-dcc1d0f9b002",
-        "email": "user@example.com",
-        "username": "john_doe"
-    }
+    "message": "User registered successfully!",
+    "user_id": "344f0fa6-a518-42db-94fa-2b59c6fe41a9"
 }
 ```
 
@@ -79,7 +71,7 @@ The API will be available at: **http://127.0.0.1:8000/**
 **Request Body:**
 ```json
 {
-    "email": "user@example.com",
+    "email": "abc@example.com",
     "password": "password123"
 }
 ```
@@ -87,13 +79,10 @@ The API will be available at: **http://127.0.0.1:8000/**
 **Response:**
 ```json
 {
-    "user": {
-        "uid": "c8e2a0d2-0b60-4f58-b98f-dcc1d0f9b002",
-        "email": "user@example.com",
-        "username": "john_doe"
-    },
-    "access_token": "your_access_token",
-    "refresh_token": "your_refresh_token"
+    "refresh": "",
+    "access": "",
+    "email": "abc@gmail.com",
+    "username": "abc"
 }
 ```
 
@@ -101,7 +90,7 @@ The API will be available at: **http://127.0.0.1:8000/**
 ### **2️⃣ Task Management**
 
 #### **Create a Task**
-**Endpoint:** `POST /api/v1/task/tasks/`
+**Endpoint:** `POST /api/v1/task/create/`
 
 **Headers:**
 ```json
@@ -113,20 +102,24 @@ The API will be available at: **http://127.0.0.1:8000/**
 **Request Body:**
 ```json
 {
-    "name": "Fix Bug #123",
-    "description": "Resolve the API timeout issue",
-    "task_type": "Development"
+  "name": "Fix API Bug1",
+  "description": "Resolve issue with user authentication API1",
+  "task_type": "development1",
+  "status": "pending"
 }
+
 ```
 
 **Response:**
 ```json
 {
-    "id": "a7f123d4-8a4f-4b8a-a23d-123456789abc",
-    "name": "Fix Bug #123",
-    "description": "Resolve the API timeout issue",
+    "id": "cfaa2152-db23-445c-a12a-143c9b5d38cc",
+    "name": "Fix API Bug1",
+    "description": "Resolve issue with user authentication API1",
+    "task_type": "development1",
     "status": "pending",
-    "created_at": "2024-07-22T12:00:00Z"
+    "completed_at": null,
+    "assigned_users": []
 }
 ```
 
@@ -136,8 +129,12 @@ The API will be available at: **http://127.0.0.1:8000/**
 **Request Body:**
 ```json
 {
-    "user_ids": ["b6c123d4-7e4f-4b8a-b89d-0987654321ef"]
+  "user_ids": [
+    "9a8de32d-f350-49f6-8285-4ef15b54e806",
+    "e3788f68-e378-4e2c-974d-b108c9504a7d"
+  ]
 }
+
 ```
 
 **Response:**
@@ -166,13 +163,4 @@ The API will be available at: **http://127.0.0.1:8000/**
 ## 🔑 **Test Credentials**
 Use these credentials to test the API:
 
-**Super Admin:**
-```plaintext
-Email: admin@example.com
-Password: admin123
-```
-
-**Regular User:**
-```plaintext
-Email: user@example.com
-Password: password123
+create the admin creds using python manage.py createsuperuser 
