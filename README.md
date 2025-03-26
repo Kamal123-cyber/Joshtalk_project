@@ -5,8 +5,8 @@ This project provides a simple API for managing tasks and assigning them to user
 
 ### **1. Clone the Repository**
 ```bash
-$ git clone https://github.com/your-repo/task-management-api.git
-$ cd task-management-api
+$ git clone https://github.com/Kamal123-cyber/Joshtalk_project.git
+$ cd Joshtalk_project
 ```
 
 ### **2. Create a Virtual Environment**
